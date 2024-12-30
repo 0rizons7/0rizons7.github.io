@@ -4,16 +4,25 @@
     <meta charset="UTF-8">
     <link href="style.css" rel="stylesheet">
     <link rel="stylesheet" href="libs/chessboard/chessboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <title>OpenChess</title>
 </head>
 <body>
-    <h1>OpenChess</h1>
-    <p>I'm hosted with GitHub Pages.</p>
-    <div id="board1" style="width: 400px"></div>
-
+    <h1 onclick ="window.location.reload();"id="title">OpenChess</h1>
+    <div id="board"></div>
+    <div id="caption">
+        <p id="openingName">Start position</p> 
+        <p id="pgn"></p>
+    </div>
+    <label>FEN:</label>
+    <p id="fen"></p>
+    
     <script src="libs/jquery.min.js" type="module" defer></script>
     <script src="libs/chess.js" type="module" defer></script>
     <script src="libs/chessboard/chessboard.js" type="module" defer></script>
-    <script src="script.js" type="module" defer></script>
+    <script src="script.js" defer></script>
+    <script src="scriptChessboard.js" type="module" defer></script>
     
 </html>

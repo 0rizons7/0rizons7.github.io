@@ -1,0 +1,48 @@
+* {
+    font-family: "Poppins", serif;
+}
+
+:root {
+    --board-size: 500px;
+}
+
+#board {
+    width: var(--board-size);
+}
+
+#caption {
+    margin-top: 5px;
+    width: var(--board-size);
+    display: flex;
+    justify-content: space-between; /* Espacement entre les éléments */
+}
+
+#openingName {
+    width: fit-content;
+    white-space: nowrap; /* Empêche le texte de se couper à la ligne */
+    flex-shrink: 0; /* Empêche l'élément de rétrécir */
+}
+
+#pgn {
+    width: 100%; /* Occupe tout l'espace disponible */
+    height: max-content;
+    white-space: nowrap; /* Empêche le texte de se couper à la ligne */
+    overflow-x: auto; /* Permet le défilement horizontal */
+    scroll-behavior: smooth; /* Défilement fluide */
+    text-align: right; /* Aligne le texte à gauche dans l'élément */
+    margin-left: 10px;
+}
+
+
+.square-legal::after {
+    content: '';
+    width: 15px;
+    height: 15px;
+    background-color: darkorange;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+

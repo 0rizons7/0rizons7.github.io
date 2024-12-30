@@ -1,8 +1,3 @@
-let board = Chessboard('board1', {
-    draggable: true,
-    position : "start"
-});
-
 function makeRequest(url, params) {
     return $.ajax({
         url: url,
@@ -19,13 +14,4 @@ function makeRequest(url, params) {
     });
 }
 
-$(document).ready(function() {
-    makeRequest('https://explorer.lichess.ovh/masters', { topGames: 0, moves: 5 })
-        .done(function(data) {
-            console.log(data);
-        })
-        .fail(function(error) {
-            console.error(error);
-        });
-});
 
