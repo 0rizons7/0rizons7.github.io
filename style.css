@@ -5,7 +5,11 @@
 :root {
     --board-size: 500px;
 }
-
+body {
+    height: 100vh;
+    width: 100vw;
+    overflow: clip;
+}
 #board {
     width: var(--board-size);
 }

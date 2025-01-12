@@ -1,11 +1,16 @@
-function makeRequest(url, params) {
+function makeRequest(url, params=null) {
     return $.ajax({
         url: url,
         method: 'GET',
         data: params,
-        dataType: 'json',
+        dataType: 'text',
         success: function(data) {
-            return data;
+            try {
+                return JSON.parse(data);
+            } 
+            catch {
+                return data
+            }
         },
         error: function(xhr, status, error) {
             console.error(`Erreur HTTP: ${xhr.status} ${xhr.statusText}`);
@@ -13,5 +18,12 @@ function makeRequest(url, params) {
         }
     });
 }
+makeRequest(url="https://lichess.org/api/study/sMXicnZ4.pgn",
+).done(function (data) {
+    console.log(data);
+}
+).fail(function (error) {
+    console.error(error);
+});
 
 

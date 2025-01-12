@@ -34,27 +34,28 @@ function updateChessboard() {
     let history = game.history({ verbose: true });
     history = history.map(move => move.from + move.to);
     makeRequest(
-        "https://explorer.lichess.ovh/masters",
-        {
+        url = "https://explorer.lichess.ovh/masters",
+        params = {
             topGames: 0,
             moves: 5,
             play: history.join(','),
-        }
+        },
     ).done(function (data) {
         console.log(data);
         try {
             $('#openingName').html(data.opening.name.replace(":", ":<br>"))
         } catch {}
-    })
-        .fail(function (error) {
+    }
+    ).fail(function (error) {
             console.error(error);
-        });
+    });
 }
 
 function renderMoveOptions(source) {
     let moves = game.moves({square:source});
+    console.log(moves)
     moves.forEach(function (move) {
-        $('.square-'+move).addClass('square-legal')
+        $('.square-'+move.slice(-2)).addClass('square-legal')
     });
 }
 
