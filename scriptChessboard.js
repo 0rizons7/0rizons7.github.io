@@ -21,8 +21,6 @@ function onDrop(source, target) {
 
     let history = game.history();
     console.log(`${source}${target}`, history[history.length -1]);
-    
-    
 }
 
 function updateChessboard() {
@@ -34,17 +32,20 @@ function updateChessboard() {
     let history = game.history({ verbose: true });
     history = history.map(move => move.from + move.to);
     makeRequest(
-        url = "https://explorer.lichess.ovh/masters",
-        params = {
-            topGames: 0,
-            moves: 5,
-            play: history.join(','),
+        "https://explorer.lichess.ovh/masters",
+        {
+        topGames: 0,
+        moves: 5,
+        play: history.join(','),
         },
     ).done(function (data) {
-        console.log(data);
+        data = JSON.parse(data);
         try {
             $('#openingName').html(data.opening.name.replace(":", ":<br>"))
-        } catch {}
+        } catch (error){
+            console.error(error.message);
+            console.log(data.opening)
+        }
     }
     ).fail(function (error) {
             console.error(error);
@@ -53,13 +54,12 @@ function updateChessboard() {
 
 function renderMoveOptions(source) {
     let moves = game.moves({square:source});
-    console.log(moves)
     moves.forEach(function (move) {
         $('.square-'+move.slice(-2)).addClass('square-legal')
     });
 }
 
-// Initialisation de l'échiquier
+
 let board = Chessboard('board', {
     draggable: true,
     onDragStart: onDragStart,

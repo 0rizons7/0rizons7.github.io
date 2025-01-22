@@ -18,25 +18,24 @@ body {
     margin-top: 5px;
     width: var(--board-size);
     display: flex;
-    justify-content: space-between; /* Espacement entre les éléments */
+    justify-content: space-between;
 }
 
 #openingName {
     width: fit-content;
-    white-space: nowrap; /* Empêche le texte de se couper à la ligne */
-    flex-shrink: 0; /* Empêche l'élément de rétrécir */
+    white-space: nowrap;
+    flex-shrink: 0; 
 }
 
 #pgn {
-    width: 100%; /* Occupe tout l'espace disponible */
+    width: 100%;
     height: max-content;
-    white-space: nowrap; /* Empêche le texte de se couper à la ligne */
-    overflow-x: auto; /* Permet le défilement horizontal */
-    scroll-behavior: smooth; /* Défilement fluide */
-    text-align: right; /* Aligne le texte à gauche dans l'élément */
+    white-space: nowrap;
+    overflow-x: auto; 
+    scroll-behavior: smooth; 
+    text-align: right; 
     margin-left: 10px;
 }
-
 
 .square-legal::after {
     content: '';
