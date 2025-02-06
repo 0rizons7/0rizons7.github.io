@@ -56,6 +56,7 @@ function updateChessboard() {
             console.error(error.message);
         }
     })
+
     makeRequest(
         "https://lichess.org/api/cloud-eval",
         {
@@ -63,11 +64,22 @@ function updateChessboard() {
         },
     ).done(function (data) {
         data = JSON.parse(data);
+        const variation = data.pvs[0]
         try {
-            console.log(data.pvs[0].cp)
-            $('#whiteEval').css("height", `${(data.pvs[0].cp + 1000)/20}%`)
-            $('#eval').text(Math.abs(Math.round(data.pvs[0].cp/10)/10))
-            console.log($('#whiteEval').height())
+            let cp = variation.cp
+            let cp_rounded = Math.abs(Math.round(cp/10)/10)
+            if ("mate" in variation) {
+                cp = game.turn() == "w" ? 1000 : -1000
+                cp_rounded = `#${variation.mate}`
+            }
+            $('#whiteEval').css("height", `${(cp + 1000)/20}%`)
+            $('#eval').text(cp_rounded)
+            
+            if (cp < 0){
+                $('#eval').css("top", "-20px").css("color", "white")
+            } else {
+                $('#eval').css("top", "0px").css("color", "black")
+            }
         } catch (error) {
             console.error(error.message);
         }

@@ -2,26 +2,32 @@
     --board-size: 500px;
     --eval-bar-border : 3px ridge gray;
 }
+
 * {
     font-family: "Poppins", serif;
 }
+
 body {
     height: 100vh;
     width: 100vw;
     padding : 10px;
     overflow: clip;
-    
 }
+
 #title {
     margin-top: 5px;
     margin-bottom:5px;
 }
+
 main {
     display: flex;
 }
+
 #board {
-    width: var(--board-size);
+    width: 100%;
+    max-width: var(--board-size);
 }
+
 #evalBar {
     display :flex;
     flex-direction: column;
@@ -36,22 +42,32 @@ main {
     border-right : var(--eval-bar-border);
     border-bottom: var(--eval-bar-border); 
 }
+
 #whiteEval{
     background-color: white;
     height:50%;
     transition: 1s cubic-bezier(0.6, 0, 0.4, 1);
 }
+
 #eval {
     margin : 0;
     font-size: 14px;
     color:black;
     text-align: center;
+    position : relative;
+    top : -20px;
+    transition: 1s cubic-bezier(0.6, 0, 0.4, 1);
 }
+
 #caption {
-    margin-top: 5px;
-    width: var(--board-size);
+    
+    width: 100%;
+    max-width: var(--board-size);
+
     display: flex;
     justify-content: space-between;
+
+    margin-top: 5px;
 }
 
 #openingName {
@@ -82,10 +98,10 @@ main {
     transform: translate(-50%, -50%);
 }
 .square-legal-take::after {
-    content: '✕'; /* Utilisation du symbole X */
-    font-size: 40px; /* Taille du X */
-    font-weight: bold; /* Épaisseur du X */
-    color: yellow; /* Couleur du X */
+    content: 'O';
+    font-size: 40px; 
+    font-weight: bold;
+    color: yellow; 
     position: absolute;
     top: 50%;
     left: 50%;
