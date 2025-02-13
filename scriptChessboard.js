@@ -10,7 +10,6 @@ const castling = {
         w : "c1"
     },
 }
-
 function onDragStart(source, piece, position, orientation) {
     if (game.game_over()) return false;
     if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
@@ -36,7 +35,7 @@ function onDrop(source, target) {
 
 function updateChessboard() {
     board.position(game.fen());
-    $('#pgn').text(game.pgn()).scrollLeft($('#pgn')[0].scrollWidth);;
+    $('#pgn').text(game.fen()).scrollLeft($('#pgn')[0].scrollWidth);;
 
     let history = game.history({ verbose: true });
     history = history.map(move => move.from + move.to);
